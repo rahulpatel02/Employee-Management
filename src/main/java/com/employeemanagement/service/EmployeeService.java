@@ -22,7 +22,7 @@ public class EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
 
-    public EmployeeDTO createEmployee(@NonNull EmployeeDTO employeeDTO) {
+    public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
         log.info("Creating employee with email: {}", employeeDTO.getEmail());
         
         if (employeeRepository.findByEmail(employeeDTO.getEmail()).isPresent()) {
