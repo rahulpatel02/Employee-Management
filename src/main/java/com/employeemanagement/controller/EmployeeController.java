@@ -40,6 +40,11 @@ public class EmployeeController {
         return ResponseEntity.ok(employee);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<List<EmployeeDTO>> getEmployee(@RequestParam Integer size, @RequestParam Integer pageNo) {
+        return ResponseEntity.ok(employeeService.getEmployee(size, pageNo));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
         log.info("PUT request to update employee with id: {}", id);
@@ -53,6 +58,7 @@ public class EmployeeController {
         employeeService.deleteEmployee(id);
         return ResponseEntity.noContent().build();
     }
+
 
 }
 
